@@ -24,6 +24,11 @@ export default new Router({
       component: () => import('../views/Artwork.vue')
     },
     {
+      path: '/artwork/:id',
+      name: 'artworkDetail',
+      component: () => import('../views/ArtworkDetail.vue')
+    },
+    {
       path: '/location',
       name: 'location',
       component: () => import('../views/Location.vue')

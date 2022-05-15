@@ -1,16 +1,12 @@
 <template>
   <div class="home">
-      <section class="hero is-dark">
-        <div class="hero-body">
-          <div class="container">
-            <h1 class="title">The AWSOMES Exhibition</h1>
-            <h2 class="subtitle">
-                Date | May 9th, 2022 ~ </br>
-                Location | ICN16 12F, 13F, 17F
-            </h2>
-          </div>
-        </div>
-      </section>
+    <div class="hero container">
+      <h1 class="title">The AWSOMES Exhibition</h1>
+      <h2 class="subtitle">
+        Date | May 9th, 2022 ~</br>
+        Location | ICN16 12F, 13F, 17F
+      </h2>
+    </div>
   </div>
 </template>
 
@@ -22,19 +18,27 @@ export default {
 </script>
 
 <style scoped>
-  .hero {    
-    text-align: center;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 400px;
-  }
+.home {    
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 400px;
+}
+
+.hero {
+  height: 100%;
+  background-image: url("../assets/background.png");
+}
   
-  .hero-body .title {
-    padding: 40px 0 20px 0;
-    font-size: 60px;
-  }
-  .subtitle {
-    font-size: 30px;
-  }
+.title {
+  padding: 40px 0 20px 0;
+  font-size: 60px;
+  margin-top: 50px;
+}
+
+.subtitle {
+  font-size: 30px;
+  margin-top: 100px;
+}
 </style>

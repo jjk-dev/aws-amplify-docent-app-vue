@@ -1,13 +1,13 @@
 <template>
   <nav class="navbar container" role="navigation">
     <div class="navbar-brand">
-      <img alt="logo" src="../assets/logo.png" width="100px" />
+      <img src="../assets/logo.png" alt="logo" width="100px" />
     </div>
     <div id="navbar" class="navbar-menu">
     <div class="navbar-end">
         <router-link to="/" exact class="navbar-item">Home</router-link>
         <router-link to="/about" class="navbar-item">About</router-link>
-        <router-link to="/artwork" class="navbar-item">Artwork</router-link>
+        <router-link to="/artwork" class="navbar-item">Artworks</router-link>
         <router-link to="/location" class="navbar-item">Location</router-link>
     </div>
     </div>
@@ -34,7 +34,6 @@ nav {
 a {
   color: #232F3E;
   margin-left: 50px;
-
 } 
 
 a:hover {
