@@ -28,6 +28,9 @@ export default {
 
 .hero {
   height: 100%;
+}
+
+.hero-example {
   background-image: url("../assets/background.png");
 }
   

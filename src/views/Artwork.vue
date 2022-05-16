@@ -6,7 +6,7 @@
         AWSomeS 회원들의 작품입니다. 작품을 클릭해 상세내용을 보실 수 있습니다.
       </p>
     </div> 
-    <div class="artworkList container">
+    <div class="artworkList">
       <p v-if="loading">Loading...</p>
       <transition-group name="card" tag="ul" class="row" v-else>
         <div v-for="pic in pics" :key="pic.id" class="artworkCard col-md-3" :pic="pic" >
