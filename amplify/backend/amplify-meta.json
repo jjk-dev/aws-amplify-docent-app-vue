@@ -9,7 +9,8 @@
       "UnauthRoleName": "amplify-awsomesapp-dev-145203-unauthRole",
       "StackName": "amplify-awsomesapp-dev-145203",
       "StackId": "arn:aws:cloudformation:us-east-1:187636792751:stack/amplify-awsomesapp-dev-145203/ed898430-cc82-11ec-b174-0a286fdf96af",
-      "AmplifyAppId": "d1vzvbnvb4n3g"
+      "AmplifyAppId": "d1vzvbnvb4n3g",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-awsomesapp-dev-145203-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     }
   },
   "hosting": {
@@ -21,9 +22,153 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-awsomesapp-dev-145203-deployment/amplify-cfn-templates/hosting/amplifyhosting-template.json",
         "logicalId": "hostingamplifyhosting"
       },
-      "lastPushTimeStamp": "2022-05-16T05:53:00.889Z",
+      "lastPushTimeStamp": "2022-06-06T19:14:03.281Z",
       "output": {},
       "lastPushDirHash": "qO5F07I0uxCc5f+btTILmsmvFBQ="
+    }
+  },
+  "storage": {
+    "awsomesArtwork": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-awsomesapp-dev-145203-deployment/amplify-cfn-templates/storage/awsomesArtwork-cloudformation-template.json",
+        "logicalId": "storageawsomesArtwork"
+      },
+      "lastPushTimeStamp": "2022-06-06T19:14:03.283Z",
+      "output": {
+        "PartitionKeyName": "id",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:dynamodb:us-east-1:187636792751:table/awsomesArtwork-dev",
+        "StreamArn": "arn:aws:dynamodb:us-east-1:187636792751:table/awsomesArtwork-dev/stream/2022-06-06T05:37:14.440",
+        "PartitionKeyType": "N",
+        "Name": "awsomesArtwork-dev"
+      },
+      "lastPushDirHash": "gU4WE9kkYwTrPrMHm6D38w7P6EY="
+    },
+    "awsomesS3": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "lastPushTimeStamp": "2022-06-06T19:14:03.504Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-awsomesapp-dev-145203-deployment/amplify-cfn-templates/storage/cloudformation-template.json",
+        "logicalId": "storageawsomesS3"
+      },
+      "output": {
+        "BucketName": "awsomesapp-awsomess3145203-dev",
+        "Region": "us-east-1"
+      },
+      "lastPushDirHash": "fZicp0Hrk+XHuYB02masmgF0DF4="
+    }
+  },
+  "function": {
+    "awsomesLambda": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "awsomesArtwork",
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "attributeEnvMap": {
+            "Name": "TABLE_NAME",
+            "Arn": "TABLE_ARN"
+          }
+        }
+      ],
+      "lastBuildTimeStamp": "2022-06-06T16:28:50.102Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2022-06-06T16:28:51.335Z",
+      "distZipFilename": "awsomesLambda-7756444f59536b462f4d-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-awsomesapp-dev-145203-deployment",
+        "s3Key": "amplify-builds/awsomesLambda-7756444f59536b462f4d-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-awsomesapp-dev-145203-deployment/amplify-cfn-templates/function/awsomesLambda-cloudformation-template.json",
+        "logicalId": "functionawsomesLambda"
+      },
+      "lastPushTimeStamp": "2022-06-06T19:14:03.287Z",
+      "output": {
+        "Region": "us-east-1",
+        "Arn": "arn:aws:lambda:us-east-1:187636792751:function:awsomesLambda-dev",
+        "Name": "awsomesLambda-dev",
+        "LambdaExecutionRole": "awsomesappLambdaRole22bc810d-dev"
+      },
+      "lastPushDirHash": "dA9Ei2U0a4XZQR8z+5AcWxlo76s="
+    }
+  },
+  "auth": {
+    "awsomesapp": {
+      "service": "Cognito",
+      "serviceType": "managed",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-awsomesapp-dev-145203-deployment/amplify-cfn-templates/auth/awsomesapp-cloudformation-template.json",
+        "logicalId": "authawsomesapp"
+      },
+      "lastPushTimeStamp": "2022-06-06T19:14:03.290Z",
+      "output": {
+        "UserPoolId": "us-east-1_AlXjIZIzB",
+        "AppClientIDWeb": "3jeq46qbpdkgrejt7k02bsuin4",
+        "AppClientID": "1vlkm3b2r73kf9bjpqo6bqojbh",
+        "IdentityPoolId": "us-east-1:2d2e1a71-39c6-4492-8e2a-b632794ab887",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:187636792751:userpool/us-east-1_AlXjIZIzB",
+        "IdentityPoolName": "awsomesapp_identitypool_a3be97c9__dev",
+        "UserPoolName": "awsomesapp_userpool_a3be97c9"
+      },
+      "lastPushDirHash": "0UlX8Baf2MRaiZda41HceVHvFA4="
+    }
+  },
+  "api": {
+    "awsomesApi": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "awsomesLambda",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ],
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-awsomesapp-dev-145203-deployment/amplify-cfn-templates/api/awsomesApi-cloudformation-template.json",
+        "logicalId": "apiawsomesApi"
+      },
+      "lastPushTimeStamp": "2022-06-06T19:14:03.292Z",
+      "output": {
+        "ApiName": "awsomesApi",
+        "RootUrl": "https://2j6ucupohc.execute-api.us-east-1.amazonaws.com/dev",
+        "ApiId": "2j6ucupohc"
+      },
+      "lastPushDirHash": "h1T9DvXclZ/ZKpqkpsYG+CLKQlg="
     }
   }
 }
